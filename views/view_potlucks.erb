@@ -1,0 +1,23 @@
+<h2> Available Potlucks </h2>
+
+<% if @potlucks.count > 0 %>
+
+<table class="table">
+<% @potlucks.each do |potluck| %>
+
+<tr>
+  <td> <%= potluck.name %> </td>
+  <td> <%= potluck.timestamp %></td>
+  <td> <a href="/potluck/<%= potluck.id %>" class="btn btn-info">Details</a></td>
+  <td> <form method="post" action="/potluck/destroy"><input type="hidden" name="id" value="<%= potluck.id %>"><button class="btn btn-danger">Delete</button> </form></td>
+
+</tr>
+
+
+<% end %>
+</table>
+<% end %>
+
+
+
+<a href="/potluck/new" class="btn btn-success"> New Potluck </a>

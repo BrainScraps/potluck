@@ -1,0 +1,17 @@
+<h2> Add Item </h2>
+
+<p> For the potluck: <strong> <%= @potluck.name %> </strong>.
+
+  <form action="/potluck/<%= @potluck.id %>/add_item" method="post">
+    <label>What is the name of this item?</label>
+    <input type="text" name="item[name]">
+    <input type="hidden" name="item[potluck_id]" value="<%= @potluck.id %>">
+  <label> Which tags are appropriate for this item? </label>
+ <% @tags.each do |tag| %>
+    <label class="checkbox"><%= tag.name %>
+      <input type="checkbox" name="item[tag_ids][]" value="<%= tag.id  %>">
+      </label>
+    <% end %>
+
+    <button class="btn btn-success"> Add item </button>
+  </form>

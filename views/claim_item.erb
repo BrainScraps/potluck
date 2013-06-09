@@ -1,0 +1,19 @@
+<h3> You'd like to bring something? </h3>
+
+<p> Here are the details! </p>
+
+<p> Item: <strong> <%= @item.name %></strong></p>
+
+<p> Tags: <strong> <%= @item.list_tags %></strong></p>
+
+<p> Potluck: <strong> <%= @potluck.name %></strong></p>
+
+<p> When: <strong> <%= @potluck.timestamp %></strong></p>
+
+<form method="post" action="/potluck/<%= @potluck.id %>/claim_item">
+<label>If all of that looks right, please agree to bring the item by typing your first name here:  </label>
+<input name="person" type="text">
+<input name="item" type="hidden" value="<%= @item.id %>">
+<button class="btn btn-success"> Claim </button>
+
+</form>

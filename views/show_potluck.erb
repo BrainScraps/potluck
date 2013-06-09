@@ -1,0 +1,30 @@
+<h2> <%= @potluck.name %> </h2>
+
+<p> This rockin' potluck will be held at the following time: <strong> <%= @potluck.timestamp %> </strong> </p>
+
+<h3> Items: </h3>
+<% if @potluck.items.count > 0 %>
+
+<table class="table">
+  <thead> <th>Item</th><th>Tags</th><th>Claimed?</th><th>Delete?</th></thead>
+<% @potluck.items.each do |item|  %>
+<tr>
+  <td><%= item.name  %></td>
+
+  <td><%= item.list_tags %></td>
+  <td><%= item.person_id ? "#{item.person.name}" : "<a href=\"/potluck/#{@potluck.id}/item/#{item.id}\" class=\"btn\"> Claim now </a>" %></td>
+  <td> <form action="/potluck/remove_item" method="post"> <input type="hidden" value="<%= @potluck.id  %>" name="potluck"><input type="hidden" value="<%= item.id  %>" name="id"> <button class="btn btn-danger">Delete</button></form> </td>
+
+
+</tr>
+<% end %>
+</table>
+<% else %>
+
+
+
+<%= "No items added yet. Take action to avoid the worse potluck of the season! " %>
+
+<% end %>
+<div class="clearfix"> </div>
+<a href="/potluck/<%= @potluck.id %>/add_item" class="btn btn-success">Add Item</a>
