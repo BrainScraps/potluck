@@ -1,0 +1,18 @@
+<h2> <%= @person.name %> likes potlucks! </h2>
+
+<p> Here are the items that <%= @person.name %> has agreed to bring.
+
+<table class="table table-striped">
+<% @person.items.each do |item| %>
+
+<tr>
+        <td><strong><%= item.name %></string></td>
+         <td><%= item.list_tags %></td>
+
+  <td> <a href="/potluck/<%= item.potluck.id %>"> <%= item.potluck.name %></a> </td>
+    <td><%= item.potluck.timestamp %></td>
+
+  </tr>
+  <% end %>
+
+</table>

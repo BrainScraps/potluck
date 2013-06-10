@@ -1,0 +1,13 @@
+<h2> Potluck-loving People</h2>
+
+
+<table class="table table-striped">
+<thead> <th> Name </th> <th> Claimed items</th></thead>
+<% @people.each do |person | %>
+<tr> <td> <a href="/person/<%= person.id %>"> <%= person.name %> </a> </td>
+<td> <%= person.items.count %> </td>
+</tr>
+<% end %>
+
+
+</table>

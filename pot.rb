@@ -124,5 +124,20 @@ post "/tags" do
 
 end
 
+#List people view
+
+get "/people" do
+  @people = Person.all
+
+  erb :people
+end
+
+#Person view
+
+get '/person/:p' do
+  @person = Person.find(params[:p])
+  erb :view_person
+end
+
 
 
